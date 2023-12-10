@@ -1,6 +1,8 @@
+import AppLayout from "@/components/layout/app.layout";
+
 export default function Root() {
   return (
-    <>
+    <AppLayout>
       <div id="sidebar">
         <h1>React Router Contacts</h1>
         <div>
@@ -31,6 +33,6 @@ export default function Root() {
         </nav>
       </div>
       <div id="detail"></div>
-    </>
+    </AppLayout>
   );
 }

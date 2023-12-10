@@ -1,28 +1,13 @@
 import { useState } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ErrorPage from "./error-page.tsx";
-import Contact from "./routes/contact.tsx";
-import Root from "./routes/root";
+
 import { Button } from "@/components/ui/button";
 import AppLayout from "./components/layout/app.layout.tsx";
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "contacts/:contactId",
-    element: <Contact />,
-  },
-]);
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <AppLayout>
-      <RouterProvider router={router} />
       <Button>Click me</Button>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
