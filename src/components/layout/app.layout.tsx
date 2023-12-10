@@ -3,9 +3,9 @@ import Navbar from "./navbar";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex">
+    <div className="flex font-poppins">
       <Navbar />
-      <div>{children}</div>
+      <div className="pt-12 px-10 bg-background">{children}</div>
     </div>
   );
 }

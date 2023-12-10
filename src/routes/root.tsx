@@ -3,36 +3,16 @@ import AppLayout from "@/components/layout/app.layout";
 export default function Root() {
   return (
     <AppLayout>
-      <div id="sidebar">
-        <h1>React Router Contacts</h1>
+      <div className="flex ">
         <div>
-          <form id="search-form" role="search">
-            <input
-              id="q"
-              aria-label="Search contacts"
-              placeholder="Search"
-              type="search"
-              name="q"
-            />
-            <div id="search-spinner" aria-hidden hidden={true} />
-            <div className="sr-only" aria-live="polite"></div>
-          </form>
-          <form method="post">
-            <button type="submit">New</button>
-          </form>
+          <h1 className="text-3xl  ">Welcome Back, Cassie</h1>
+          <p className="text-gray-500 mt-2 text-xl">Statatistics Overview</p>
         </div>
-        <nav>
-          <ul>
-            <li>
-              <a href={`/contacts/1`}>Your Name</a>
-            </li>
-            <li>
-              <a href={`/contacts/2`}>Your Friend</a>
-            </li>
-          </ul>
-        </nav>
+        <div className="flex gap-2">
+          <span className="text-gray-500">Total Revenue</span>
+          <span className="text-2xl font-semibold">$ 1,250.00</span>
+        </div>
       </div>
-      <div id="detail"></div>
     </AppLayout>
   );
 }

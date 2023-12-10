@@ -44,8 +44,8 @@ export default function Navbar() {
   ];
 
   return (
-    <div className="bg-primary w-fit py-5 text-white h-screen items-center flex flex-col justify-between  ">
-      <div className="space-y-20 ">
+    <div className="bg-primary shadow-xl w-fit py-5 text-white h-screen items-center flex flex-col justify-between  ">
+      <div className="space-y-20  ">
         <Link className="flex flex-col items-center" to="/">
           <img
             src="/src/assets/kite.png"
@@ -78,10 +78,10 @@ export default function Navbar() {
         </div>
       </div>
       <div className="flex flex-col gap-4 items-center">
-        <Button variant="secondary" className="rounded-xl p-2 w-10">
-          <Plus />
+        <Button variant="secondary" className="rounded-xl p-2 w-9 h-9">
+          <Plus size={20} />
         </Button>
-        <Button className="bg-zinc-800 hover:bg-zinc-800 active:bg-zinc-900 rounded-xl p-2 w-10">
+        <Button className="bg-zinc-800 hover:bg-zinc-800 active:bg-zinc-900 rounded-xl p-2 w-9 h-9">
           <LogOut />
         </Button>
       </div>
