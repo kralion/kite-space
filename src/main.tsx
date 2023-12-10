@@ -15,7 +15,27 @@ const router = createBrowserRouter([
     // loader: rootLoader,
     children: [
       {
-        path: "team",
+        path: "statistics",
+        element: <Contact />,
+        // loader: teamLoader,
+      },
+      {
+        path: "people",
+        element: <Contact />,
+        // loader: teamLoader,
+      },
+      {
+        path: "billing",
+        element: <Contact />,
+        // loader: teamLoader,
+      },
+      {
+        path: "settings",
+        element: <Contact />,
+        // loader: teamLoader,
+      },
+      {
+        path: "help",
         element: <Contact />,
         // loader: teamLoader,
       },
