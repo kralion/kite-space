@@ -5,7 +5,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex font-poppins">
       <Navbar />
-      <div className="pt-12 px-10 bg-background">{children}</div>
+      <div className="pt-12 space-y-5 bg-background">{children}</div>
     </div>
   );
 }
