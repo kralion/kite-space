@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { LucideArrowUpRight, LucidePersonStanding } from "lucide-react";
+import { LucideArrowUpRight } from "lucide-react";
 import { Button } from "../ui/button";
 type CardProps = {
   color: string;
@@ -19,7 +19,9 @@ export default function CardDashboard({
   children,
 }: CardProps) {
   return (
-    <Card className={`border-none rounded-xl bg-${color}-200 w-[270px]`}>
+    <Card
+      className={`border-none rounded-xl hover:opacity-90 ${color} w-[270px]`}
+    >
       <CardHeader>
         <CardTitle className="flex text-md justify-between items-center">
           <h1>{title}</h1>
