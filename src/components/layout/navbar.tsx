@@ -58,9 +58,8 @@ export default function Navbar() {
             const isActive = location.pathname === item.path;
 
             return (
-              <Link to={item.path} className="w-full">
+              <Link key={item.label} to={item.path} className="w-full">
                 <Button
-                  key={item.label}
                   className={clsx(
                     "w-full transition-all duration-500",
                     twMerge([

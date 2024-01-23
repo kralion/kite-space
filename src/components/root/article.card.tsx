@@ -1,56 +1,33 @@
-import * as React from "react";
-
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Card, CardFooter, CardHeader } from "@/components/ui/card";
+import { ChevronRight } from "lucide-react";
 
 export function ArticleCard() {
   return (
-    <Card className="w-[350px]">
+    <Card
+      className="flex flex-col w-full justify-between h-80"
+      style={{
+        backgroundImage: `url(https://img.freepik.com/free-psd/journal-cover-design-mockup_53876-57953.jpg?size=626&ext=jpg&ga=GA1.1.1214943181.1703785948&semt=sph)`,
+      }}
+    >
       <CardHeader>
-        <CardTitle>Create project</CardTitle>
-        <CardDescription>Deploy your new project in one-click.</CardDescription>
+        <div className="flex flex-col">
+          <span className="bg-white  rounded-tr-xl px-3 pt-2 rounded-tl-xl w-fit">
+            Maximizing
+          </span>
+          <span className="bg-white rounded-r-xl px-3 rounded-bl-xl w-fit p-2">
+            Audience Engagament
+          </span>
+        </div>
       </CardHeader>
-      <CardContent>
-        <form>
-          <div className="grid w-full items-center gap-4">
-            <div className="flex flex-col space-y-1.5">
-              <Input id="name" placeholder="Name of your project" />
-            </div>
-            <div className="flex flex-col space-y-1.5">
-              <Select>
-                <SelectTrigger id="framework">
-                  <SelectValue placeholder="Select" />
-                </SelectTrigger>
-                <SelectContent position="popper">
-                  <SelectItem value="next">Next.js</SelectItem>
-                  <SelectItem value="sveltekit">SvelteKit</SelectItem>
-                  <SelectItem value="astro">Astro</SelectItem>
-                  <SelectItem value="nuxt">Nuxt.js</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-        </form>
-      </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button variant="outline">Cancel</Button>
-        <Button>Deploy</Button>
+
+      <CardFooter className="flex gap-2 items-center">
+        <Button variant="secondary" className="rounded-2xl">
+          Read Article
+        </Button>
+        <Button variant="secondary" className="rounded-full p-2">
+          <ChevronRight />
+        </Button>
       </CardFooter>
     </Card>
   );

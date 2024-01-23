@@ -20,11 +20,11 @@ export default function CardDashboard({
 }: CardProps) {
   return (
     <Card
-      className={`border-none rounded-xl hover:opacity-90 ${color} w-[270px]`}
+      className={`border-none rounded-xl min-w-[280px] hover:opacity-90 ${color} `}
     >
       <CardHeader>
         <CardTitle className="flex text-md justify-between items-center">
-          <h1>{title}</h1>
+          <span>{title}</span>
           <Button variant="ghost">
             {percentage}%{" "}
             <LucideArrowUpRight className="text-zinc-500" size={20} />
