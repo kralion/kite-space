@@ -11,6 +11,7 @@ import Statistics from "./pages/statistics";
 import Root from "./routes/root";
 import Login from "./pages/(auth)/login";
 import SignUp from "./pages/(auth)/sign-up";
+import "animate.css";
 
 const router = createBrowserRouter([
   {

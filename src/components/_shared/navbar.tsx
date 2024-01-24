@@ -12,6 +12,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "../ui/button";
 import { twMerge } from "tailwind-merge";
+import KiteLogo from "@/assets/kite.png";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -67,11 +68,7 @@ export default function Navbar() {
     <div className="bg-primary shadow-xl w-fit py-5 text-white h-screen items-center flex flex-col justify-between  ">
       <div className="space-y-20  ">
         <Link className="flex flex-col items-center" to="/">
-          <img
-            src="/src/assets/kite.png"
-            className="w-1/2 active:opacity-80"
-            alt="logo"
-          />
+          <img src={KiteLogo} className="w-1/2 active:opacity-80" alt="logo" />
         </Link>
         <div className=" flex flex-col gap-5 items-center ">
           {tabItems.map((item) => {
