@@ -1,12 +1,14 @@
-import { Link } from "react-router-dom";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+import AppleIcon from "@/assets/svg/apple.svg";
+import FacebookIcon from "@/assets/svg/facebook.svg";
+import GoogleIcon from "@/assets/svg/google.svg";
 import { Button } from "@/components/ui/button";
-import { Apple, Chrome } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Link } from "react-router-dom";
 
 export function SignUpForm() {
   return (
-    <div className="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div className="bg-gray-100 min-h-screen animate__animated animate__fadeIn flex items-center justify-center">
       <div className="max-w-md rounded-lg shadow-lg bg-white p-6 space-y-6 border border-gray-200 dark:border-gray-700">
         <div className="space-y-2 text-center">
           <h1 className="text-3xl font-bold">Sign Up</h1>
@@ -55,31 +57,36 @@ export function SignUpForm() {
             <hr className="flex-grow border-zinc-200 dark:border-zinc-700" />
           </div>
           <div className="space-y-4">
-            <Button
-              className="w-full bg-[#4285F4] text-white"
-              variant="outline"
-            >
+            <Button className="w-full " variant="outline">
               <div className="flex items-center justify-center">
-                <Chrome className="w-5 h-5 mr-2" />
-                Continue with Google
+                <img src={GoogleIcon} className="w-5 h-5 mr-2" />
+                Login with Google
               </div>
             </Button>
-            <Button className="w-full bg-black text-white" variant="outline">
+            <Button className="w-full bg-black text-white">
               <div className="flex items-center justify-center">
-                <Apple className="w-5 h-5 mr-2" />
-                Continue with Apple
+                <img src={AppleIcon} className="w-5 h-5 mr-2" />
+                Login with Apple
+              </div>
+            </Button>
+            <Button className="w-full" variant="outline">
+              <div className="flex items-center justify-center">
+                <img src={FacebookIcon} className="w-5 h-5 mr-2" />
+                Login with Google
               </div>
             </Button>
           </div>
-          <div className="flex items-center justify-end gap-2">
+          <div className="flex items-center justify-end">
             <span className=" font-mono tracking-tighter  text-xs ">
-              Already have an Account
+              Already have an Account?
             </span>
-            <Link
-              className="text-blue-500 font-mono tracking-tighter text-xs hover:text-blue-700"
-              to="/login"
-            >
-              Log In
+            <Link to="/login">
+              <Button
+                className="text-blue-500 px-2 font-mono tracking-tighter text-xs hover:text-blue-700"
+                variant="link"
+              >
+                Log In
+              </Button>
             </Link>
           </div>
         </div>
