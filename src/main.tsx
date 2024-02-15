@@ -1,56 +1,66 @@
+import { ClerkProvider } from "@clerk/clerk-react";
+import "animate.css";
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import ErrorPage from "./error-page";
-import Community from "./pages/community";
-import HelpCenter from "./pages/help-center";
-import Home from "./pages/home";
-import Settings from "./pages/settings";
-import Statistics from "./pages/statistics";
-import Root from "./routes/root";
-import Login from "./pages/(auth)/login";
+import SignIn from "./pages/(auth)/login";
 import SignUp from "./pages/(auth)/sign-up";
-import "animate.css";
+import Root from "./routes/root";
+import ErrorPage from "./error-page";
+import Community from "./pages/(app)/community";
+import HelpCenter from "./pages/(app)/help-center";
+import Home from "./pages/(app)/home";
+import "./index.css";
+import Settings from "./pages/(app)/settings";
+import Statistics from "./pages/(app)/statistics";
+import Layout from "./pages/(app)/layout";
+
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+if (!PUBLISHABLE_KEY) {
+  throw new Error("Missing Publishable Key");
+}
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/statistics",
-        element: <Statistics />,
-      },
-      {
-        path: "/community",
-        element: <Community />,
-      },
-
-      {
-        path: "/settings",
-        element: <Settings />,
-      },
-      {
-        path: "/help-center",
-        element: <HelpCenter />,
-      },
-    ],
   },
   {
     path: "/login",
-    element: <Login />,
-    errorElement: <ErrorPage />,
+    element: <SignIn />,
   },
   {
     path: "/sign-up",
     element: <SignUp />,
+  },
+  {
+    path: "/app",
+    element: <Layout />,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/app/home",
+        element: <Home />,
+      },
+      {
+        path: "/app/statistics",
+        element: <Statistics />,
+      },
+      {
+        path: "/app/community",
+        element: <Community />,
+      },
+
+      {
+        path: "/app/settings",
+        element: <Settings />,
+      },
+      {
+        path: "/app/help-center",
+        element: <HelpCenter />,
+      },
+    ],
   },
 ]);
 const rootElement = document.getElementById("root");
@@ -60,6 +70,8 @@ if (!rootElement) {
 
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+      <RouterProvider router={router} />
+    </ClerkProvider>
   </React.StrictMode>
 );

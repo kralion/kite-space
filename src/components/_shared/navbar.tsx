@@ -45,27 +45,27 @@ export default function Navbar() {
     {
       label: "Home",
       icon: <Home />,
-      path: "/",
+      path: "/app/home",
     },
     {
       label: "Statistics",
       icon: <LineChart />,
-      path: "/statistics",
+      path: "/app/statistics",
     },
     {
       label: "Community",
       icon: <Users />,
-      path: "/community",
+      path: "/app/community",
     },
     {
       label: "Settings",
       icon: <Settings />,
-      path: "/settings",
+      path: "/app/settings",
     },
     {
       label: "Help-center",
       icon: <HelpCircle />,
-      path: "/help-center",
+      path: "/app/help-center",
     },
   ];
 

@@ -1,6 +1,8 @@
 import { ArticleCard } from "@/components/root/article.card";
 import CardDashboard from "@/components/root/card";
 import BarChart from "@/components/root/chart";
+import { SignOutButton, SignInButton } from "@clerk/clerk-react";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -41,6 +43,11 @@ import {
   LucideMail,
   LucidePersonStanding,
 } from "lucide-react";
+import { SignedIn, SignedOut } from "@clerk/clerk-react";
+import { redirect } from "react-router-dom";
+import Navbar from "@/components/_shared/navbar";
+
+import { Outlet } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -186,5 +193,16 @@ export default function Home() {
         </div>
       </div>
     </div>
+
+    // <div>
+    //   <SignedOut>
+    //     <SignInButton />
+    //     <p>This content is public. Only signed out users can see this.</p>
+    //   </SignedOut>
+    //   <SignedIn>
+    //     <SignOutButton signOutCallback={() => void redirect("/auth/login")} />
+    //     <p>This content is private. Only signed in users can see this.</p>
+    //   </SignedIn>
+    // </div>
   );
 }
