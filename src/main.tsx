@@ -70,7 +70,11 @@ if (!rootElement) {
 
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+    <ClerkProvider
+      signInUrl="/src/pages/(auth)/login.tsx"
+      signUpUrl="/src/pages/(auth)/sign-up.tsx"
+      publishableKey={PUBLISHABLE_KEY}
+    >
       <RouterProvider router={router} />
     </ClerkProvider>
   </React.StrictMode>

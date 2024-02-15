@@ -1,8 +1,6 @@
 import { ArticleCard } from "@/components/root/article.card";
 import CardDashboard from "@/components/root/card";
 import BarChart from "@/components/root/chart";
-import { SignOutButton, SignInButton } from "@clerk/clerk-react";
-
 import {
   AlertDialog,
   AlertDialogAction,
@@ -43,11 +41,6 @@ import {
   LucideMail,
   LucidePersonStanding,
 } from "lucide-react";
-import { SignedIn, SignedOut } from "@clerk/clerk-react";
-import { redirect } from "react-router-dom";
-import Navbar from "@/components/_shared/navbar";
-
-import { Outlet } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -57,16 +50,19 @@ export default function Home() {
           <h1 className="text-3xl  ">Welcome Back, Cassie</h1>
           <p className="text-gray-500 mt-2 ">Activity Overview</p>
         </div>
-        <div className="flex gap-3 ">
+        <div className="flex gap-2">
           <Input
-            className="border-none w-64 bg-white rounded-xl"
+            className="border-none w-72 bg-white rounded-xl"
             type="email"
             placeholder="Search"
           />
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="secondary" className="group">
-                <LucideMail className="fill-black stroke-white " size={20} />
+              <Button variant="ghost" className="group p-2">
+                <LucideMail
+                  className="duration-300 group-hover:fill-black group-hover:stroke-white "
+                  size={20}
+                />
               </Button>
             </SheetTrigger>
             <SheetContent>
@@ -107,8 +103,11 @@ export default function Home() {
 
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button variant="secondary">
-                <LucideBell className="fill-black" size={20} />
+              <Button className="p-2 group" variant="ghost">
+                <LucideBell
+                  className="duration-300 group-hover:fill-black  "
+                  size={20}
+                />
               </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
@@ -129,13 +128,51 @@ export default function Home() {
             </AlertDialogContent>
           </AlertDialog>
 
-          <Avatar>
-            <AvatarImage
-              src="https://mighty.tools/mockmind-api/content/human/7.jpg"
-              alt="user"
-            />
-            <AvatarFallback>YM</AvatarFallback>
-          </Avatar>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Avatar className="cursor-pointer active:opacity-80">
+                <AvatarImage
+                  src="https://mighty.tools/mockmind-api/content/human/7.jpg"
+                  alt="user"
+                />
+                <AvatarFallback>YM</AvatarFallback>
+              </Avatar>
+            </SheetTrigger>
+            <SheetContent>
+              <SheetHeader>
+                <SheetTitle>Recent Messages</SheetTitle>
+                <SheetDescription>
+                  Here you can see the messages/responses to your post and the
+                  interactions that you have with your followers and audience
+                </SheetDescription>
+              </SheetHeader>
+              <div className="grid gap-4 py-4">
+                <div className="items-center gap-4">
+                  <div className="border flex gap-3 items-center rounded-xl p-4 w-full">
+                    <Avatar className="w-16 h-16">
+                      <AvatarImage
+                        src="https://mighty.tools/mockmind-api/content/human/7.jpg"
+                        alt="user"
+                      />
+                      <AvatarFallback>YM</AvatarFallback>
+                    </Avatar>
+                    <div className="col-span-3">
+                      <p className="font-bold">Yong Min</p>
+                      <p className="text-gray-500 text-sm">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Voluptatibus, quidem?
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <SheetFooter>
+                <SheetClose asChild>
+                  <Button type="submit">Clear Mail</Button>
+                </SheetClose>
+              </SheetFooter>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
       <div className="bg-white p-10 space-y-5">

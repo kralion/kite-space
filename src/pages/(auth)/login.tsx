@@ -1,9 +1,10 @@
 import { LoginForm } from "@/components/login-form";
+import { SignedOut } from "@clerk/clerk-react";
 
 export default function SignIn() {
   return (
-    <div>
+    <SignedOut>
       <LoginForm />
-    </div>
+    </SignedOut>
   );
 }

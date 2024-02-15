@@ -35,7 +35,8 @@ import {
   Users,
 } from "lucide-react";
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, redirect } from "react-router-dom";
+import { SignOutButton, SignedIn } from "@clerk/clerk-react";
 import { twMerge } from "tailwind-merge";
 import { Button } from "../ui/button";
 
@@ -133,32 +134,38 @@ export default function Navbar() {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <AlertDialog>
-          <AlertDialogTrigger asChild>
-            <Button className="bg-zinc-800 hover:bg-zinc-800 active:bg-zinc-900 rounded-xl p-2 w-9 h-9">
-              <LogOut />
-            </Button>
-          </AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-              <AlertDialogDescription>
-                Remember that after the logout you should be enter your
-                credentials again
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction className="px-0">
-                <Link to="/login">
-                  <Button variant="destructive" className="px-5">
-                    Logout
-                  </Button>
-                </Link>
-              </AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+        <SignedIn>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button className="bg-zinc-800 hover:bg-zinc-800 active:bg-zinc-900 rounded-xl p-2 w-9 h-9">
+                <LogOut />
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Remember that after the logout you should be enter your
+                  credentials again
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction className="px-0">
+                  <SignOutButton
+                    signOutCallback={() => {
+                      redirect("/login");
+                    }}
+                  >
+                    <Button variant="destructive" className="px-5">
+                      Logout
+                    </Button>
+                  </SignOutButton>
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </SignedIn>
       </div>
     </div>
   );

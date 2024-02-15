@@ -37,7 +37,7 @@ export function LoginForm() {
     console.log(data);
   };
   return (
-    <div className="bg-gray-100 animate__animated animate__fadeIn min-h-screen flex items-center justify-center">
+    <div className="bg-zinc-100 animate__animated animate__fadeIn min-h-screen flex items-center justify-center">
       <div className="max-w-md rounded-xl shadow-lg bg-white p-6 space-y-6 border border-gray-200 dark:border-gray-700">
         <div className="space-y-2 text-center">
           <Link to="/">
