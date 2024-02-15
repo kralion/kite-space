@@ -1,3 +1,29 @@
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import clsx from "clsx";
 import {
   HelpCircle,
@@ -10,29 +36,8 @@ import {
 } from "lucide-react";
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Button } from "../ui/button";
 import { twMerge } from "tailwind-merge";
-import KiteLogo from "@/assets/kite.png";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+import { Button } from "../ui/button";
 
 export default function Navbar() {
   const location = useLocation();
@@ -68,27 +73,42 @@ export default function Navbar() {
     <div className="bg-primary shadow-xl w-fit py-5 text-white h-screen items-center flex flex-col justify-between  ">
       <div className="space-y-20  ">
         <Link className="flex flex-col items-center" to="/">
-          <img src={KiteLogo} className="w-1/2 active:opacity-80" alt="logo" />
+          <img
+            className="mx-auto bg-white rounded-full cursor-pointer active:opacity-80"
+            width={34}
+            height={34}
+            src="https://cdn-icons-png.flaticon.com/128/7721/7721025.png"
+            alt="Kite Logo"
+          />
         </Link>
         <div className=" flex flex-col gap-5 items-center ">
           {tabItems.map((item) => {
             const isActive = location.pathname === item.path;
 
             return (
-              <Link key={item.label} to={item.path} className="w-full">
-                <Button
-                  className={clsx(
-                    "w-full transition-all duration-500",
-                    twMerge([
-                      isActive
-                        ? "rounded-none border-l-2 border-white text-white"
-                        : "border-l-2 border-transparent text-zinc-500",
-                    ])
-                  )}
-                >
-                  {React.cloneElement(item.icon, { size: 20 })}
-                </Button>
-              </Link>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <Link key={item.label} to={item.path} className="w-full">
+                      <Button
+                        className={clsx(
+                          "w-full transition-all duration-500",
+                          twMerge([
+                            isActive
+                              ? "rounded-none border-l-2 border-white text-white"
+                              : "border-l-2 border-transparent text-zinc-500",
+                          ])
+                        )}
+                      >
+                        {React.cloneElement(item.icon, { size: 20 })}
+                      </Button>
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p className="text-xs">{item.label}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             );
           })}
         </div>

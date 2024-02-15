@@ -20,13 +20,36 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { SignInSchema } from "@/schemas/auth";
+import { z } from "zod";
 export function LoginForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<z.infer<typeof SignInSchema>>({
+    resolver: zodResolver(SignInSchema),
+  });
+
+  const onSubmit = (data: z.infer<typeof SignInSchema>) => {
+    console.log(data);
+  };
   return (
     <div className="bg-gray-100 animate__animated animate__fadeIn min-h-screen flex items-center justify-center">
-      <div className="max-w-sm rounded-lg shadow-lg bg-white p-6 space-y-6 border border-gray-200 dark:border-gray-700">
+      <div className="max-w-md rounded-xl shadow-lg bg-white p-6 space-y-6 border border-gray-200 dark:border-gray-700">
         <div className="space-y-2 text-center">
-          <h1 className="text-3xl font-bold">Login</h1>
-          <p className="text-zinc-500 dark:text-zinc-400">
+          <Link to="/">
+            <img
+              className="mx-auto cursor-pointer active:opacity-80"
+              width={64}
+              height={64}
+              src="https://cdn-icons-png.flaticon.com/128/7721/7721025.png"
+            />
+          </Link>
+          <h1 className="text-3xl font-bold">Welcome Back</h1>
+          <p className="text-zinc-500 text-xs dark:text-zinc-400">
             By logging in, you accept our{" "}
             <Link className="text-blue-500 hover:text-blue-700" to="#">
               terms{" "}
@@ -37,38 +60,51 @@ export function LoginForm() {
             </Link>
           </p>
         </div>
-        <div className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <Input
+              {...register("email")}
               id="email"
               placeholder="m@example.com"
               required
               type="email"
             />
+            {errors.email && (
+              <p className="text-red-500 text-xs">{errors.email.message}</p>
+            )}
           </div>
           <div className="space-y-2">
             <Label htmlFor="email">Password</Label>
             <Input
+              {...register("password")}
               id="password"
               placeholder="********"
               required
               type="password"
             />
+            {errors.password && (
+              <p className="text-red-500 text-xs">{errors.password.message}</p>
+            )}
           </div>
-          <div className="flex items-center space-x-2">
-            <hr className="flex-grow border-zinc-200 dark:border-zinc-700" />
-            <span className="text-zinc-400 dark:text-zinc-300 text-sm">OR</span>
-            <hr className="flex-grow border-zinc-200 dark:border-zinc-700" />
-          </div>
+          <Button type="submit" className="w-full ">
+            Log In
+          </Button>
           <div className="space-y-4">
+            <div className="flex items-center space-x-2">
+              <hr className="flex-grow border-zinc-200 dark:border-zinc-700" />
+              <span className="text-zinc-400 dark:text-zinc-300 text-sm">
+                OR
+              </span>
+              <hr className="flex-grow border-zinc-200 dark:border-zinc-700" />
+            </div>
             <Button className="w-full " variant="outline">
               <div className="flex items-center justify-center">
                 <img src={GoogleIcon} className="w-5 h-5 mr-2" />
                 Login with Google
               </div>
             </Button>
-            <Button className="w-full bg-black text-white">
+            <Button variant="outline" className="w-full  ">
               <div className="flex items-center justify-center">
                 <img src={AppleIcon} className="w-5 h-5 mr-2" />
                 Login with Apple
@@ -81,6 +117,7 @@ export function LoginForm() {
               </div>
             </Button>
           </div>
+
           <div className="flex items-center justify-between">
             <AlertDialog>
               <AlertDialogTrigger asChild>
@@ -122,7 +159,7 @@ export function LoginForm() {
               </Button>
             </Link>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
