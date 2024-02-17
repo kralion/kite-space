@@ -1,30 +1,20 @@
-import {
-  ClerkProvider,
-  SignInButton,
-  SignOutButton,
-  SignedIn,
-  SignedOut,
-} from "@clerk/clerk-react";
+import { ClerkProvider } from "@clerk/clerk-react";
+import { Toaster } from "@/components/ui/toaster";
 import "animate.css";
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  redirect,
-  RouterProvider,
-} from "react-router-dom";
-import "./index.css";
-import SignIn from "./pages/(auth)/login";
-import SignUp from "./pages/(auth)/sign-up";
-import Root from "./routes/root";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./error-page";
+import "./index.css";
 import Community from "./pages/(app)/community";
 import HelpCenter from "./pages/(app)/help-center";
 import Home from "./pages/(app)/home";
-import "./index.css";
+import Layout from "./pages/(app)/layout";
 import Settings from "./pages/(app)/settings";
 import Statistics from "./pages/(app)/statistics";
-import Layout from "./pages/(app)/layout";
+import SignIn from "./pages/(auth)/login";
+import SignUp from "./pages/(auth)/sign-up";
+import Root from "./routes/root";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 if (!PUBLISHABLE_KEY) {
@@ -85,6 +75,7 @@ ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
     <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
       <RouterProvider router={router} />
+      <Toaster />
     </ClerkProvider>
   </React.StrictMode>
 );
