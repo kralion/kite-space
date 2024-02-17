@@ -20,8 +20,10 @@ import { ShieldHalf } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SignInSchema } from "@/schemas/auth";
+import { useSignIn } from "@clerk/clerk-react";
 import { z } from "zod";
 export function LoginForm() {
+  const { signIn } = useSignIn();
   const {
     register,
     handleSubmit,
@@ -30,11 +32,21 @@ export function LoginForm() {
     resolver: zodResolver(SignInSchema),
   });
 
-  const onSubmit = (data: z.infer<typeof SignInSchema>) => {
+  const onSubmit = async (data: z.infer<typeof SignInSchema>) => {
     console.log(data);
+    try {
+      if (signIn) {
+        await signIn({
+          identifier: data.email,
+          password: data.password,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
-    <div className="bg-zinc-100 animate__animated animate__fadeIn min-h-screen flex items-center justify-center">
+    <div className="bg-zinc-100 animate__animated animate__fadeIn lg:p-0 p-5 min-h-screen flex items-center justify-center">
       <div className="max-w-md rounded-xl shadow-lg bg-white p-6 space-y-6 border border-gray-200 dark:border-gray-700">
         <div className="space-y-2 text-center">
           <Link to="/">

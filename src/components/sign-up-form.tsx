@@ -23,7 +23,7 @@ export function SignUpForm() {
     console.log(data);
   };
   return (
-    <div className="bg-zinc-100 min-h-screen animate__animated animate__fadeIn flex items-center justify-center">
+    <div className="bg-zinc-100 min-h-screen lg:p-0 p-5 animate__animated animate__fadeIn flex items-center justify-center">
       <div className="max-w-md rounded-xl shadow-lg bg-white p-6 space-y-6 border border-gray-200 dark:border-gray-700">
         <div className="space-y-2 text-center">
           <Link to="/">
@@ -48,7 +48,7 @@ export function SignUpForm() {
           </p>
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div className="flex justify-between">
+          <div className="flex lg:justify-between  gap-3 lg:gap-0">
             <div className="space-y-2">
               <Label htmlFor="email">Name</Label>
               <Input

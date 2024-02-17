@@ -15,7 +15,7 @@ export default function Root() {
       className="flex justify-center  h-screen items-center"
     >
       <SignIn path="/login" routing="path" />
-      <div className="flex flex-col gap-8 items-center w-1/2">
+      <div className="flex flex-col gap-8 items-center lg:w-1/2 w-2/3">
         <img
           width={80}
           height={80}
@@ -25,10 +25,15 @@ export default function Root() {
         <h1 className="scroll-m-20 text-4xl bg-clip-text text-transparent bg-gradient-to-tr from-black to-zinc-400 via-zinc-500 font-extrabold tracking-tight lg:text-5xl">
           Kite Space
         </h1>
-        <p className="leading-7 [&:not(:first-child)]:mt-3 text-center">
+        <p className="leading-7 hidden animate__animated animate__fadeIn lg:inline-flex [&:not(:first-child)]:mt-3 text-center">
           A platform for content creators to track their analytics and monetize
           their content. We provide a platform for creators to connect—
           <span className="underline">with their audience</span> and —
+          <span className="underline">grow their brand.</span>
+        </p>
+        <p className="leading-7 lg:hidden animate__animated animate__fadeIn  [&:not(:first-child)]:mt-3 text-center">
+          Platform for creators that wants to engage with their—
+          <span className="underline"> audience</span> and —
           <span className="underline">grow their brand.</span>
         </p>
         <Link to="/login">

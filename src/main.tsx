@@ -1,8 +1,18 @@
-import { ClerkProvider } from "@clerk/clerk-react";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignOutButton,
+  SignedIn,
+  SignedOut,
+} from "@clerk/clerk-react";
 import "animate.css";
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  redirect,
+  RouterProvider,
+} from "react-router-dom";
 import "./index.css";
 import SignIn from "./pages/(auth)/login";
 import SignUp from "./pages/(auth)/sign-up";
@@ -73,11 +83,7 @@ if (!rootElement) {
 
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
-    <ClerkProvider
-      signInUrl="/src/pages/(auth)/login.tsx"
-      signUpUrl="/src/pages/(auth)/sign-up.tsx"
-      publishableKey={PUBLISHABLE_KEY}
-    >
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
       <RouterProvider router={router} />
     </ClerkProvider>
   </React.StrictMode>
