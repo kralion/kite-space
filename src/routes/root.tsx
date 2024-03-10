@@ -22,23 +22,21 @@ export default function Root() {
           className="rounded-full shadow-lg"
           src="https://cdn-icons-png.flaticon.com/128/7721/7721025.png"
         />
-        <h1 className="scroll-m-20 text-4xl bg-clip-text text-transparent bg-gradient-to-tr from-black to-zinc-400 via-zinc-500 font-extrabold tracking-tight lg:text-5xl">
+        <h1 className="scroll-m-20 text-4xl bg-clip-text text-transparent bg-gradient-to-tr from-black/90 to-zinc-700 font-extrabold tracking-tight lg:text-5xl">
           Kite Space
         </h1>
-        <p className="leading-7 hidden animate__animated animate__fadeIn lg:inline-flex [&:not(:first-child)]:mt-3 text-center">
-          A platform for content creators to track their analytics and monetize
-          their content. We provide a platform for creators to connect—
-          <span className="underline">with their audience</span> and —
-          <span className="underline">grow their brand.</span>
+        <p className=" w-2/3 text-sm mx-auto hidden animate__animated animate__fadeIn lg:inline-flex text-center">
+          A platform for content creators to track their analytics, monetize
+          their content, connect—with their audience and and grow their brand.
         </p>
-        <p className="leading-7 lg:hidden animate__animated animate__fadeIn  [&:not(:first-child)]:mt-3 text-center">
+        <p className=" lg:hidden animate__animated animate__fadeIn   text-center">
           Platform for creators that wants to engage with their—
           <span className="underline"> audience</span> and —
           <span className="underline">grow their brand.</span>
         </p>
         <Link to="/login">
           <Button className="group px-8 rounded-lg">
-            Login to Continue
+            Join to Waitlist
             <MoveRight className=" ml-2 duration-500 group-hover:translate-x-3" />
           </Button>
         </Link>
