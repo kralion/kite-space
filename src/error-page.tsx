@@ -1,4 +1,4 @@
-import { ArrowLeftFromLine, MoveLeft } from "lucide-react";
+import { MoveLeft } from "lucide-react";
 import { useNavigate, useRouteError } from "react-router-dom";
 import { Button } from "./components/ui/button";
 
